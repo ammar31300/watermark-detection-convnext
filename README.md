@@ -47,8 +47,9 @@ Input (384 × 384 × 3)
 ## 🔬 Key Engineering Highlights
 
 - **Differential Learning Rates (Layer-wise Fine-Tuning):**
-  - **Feature Extractor:** $\eta_{\text{backbone}} = 2 \times 10^{-5}$ via `AdamW` ($\beta_1=0.9, \beta_2=0.999, \text{weight\_decay}=10^{-2}$).
-  - **Classification Head:** $\eta_{\text{head}} = 2 \times 10^{-4}$ for rapid manifold alignment.
+- **Feature Extractor:** `lr = 2e-5` via `AdamW` (`betas=(0.9, 0.999)`, `weight_decay=1e-2`).
+- **Classification Head:** `lr = 2e-4` for rapid manifold alignment.
+
 - **Mixed Precision Computing:** Accelerated using `torch.amp.autocast('cuda')` coupled with dynamic loss scaling via `GradScaler` to maximize NVIDIA Tensor Core utilization.
 - **Fail-Safe Data Pipeline:** Integrated `SafeDataset` wrapper around PIL loaders to dynamically sanitize single-channel (`L`), 4-channel (`CMYK`), and truncated/malformed JPEGs into standard 3-channel RGB manifolds.
 - **Numerical Stability:** Supervised via `BCEWithLogitsLoss`, coupling the Sigmoid function and binary cross-entropy into a single fused operation to eliminate underflow/overflow under extreme logits.
