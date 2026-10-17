@@ -184,4 +184,4 @@ print(f"Prediction: {pred_label} (Confidence: {prob * 100:.2f}%)")
 
 ---
 
-*Maintained by [Ammar](https://github.com/ammar31300) — Quantum & AI Research Engineer.*
+*Maintained by [Alireza Torkashvand](https://github.com/ammar31300) — Deep-Tech & Applied AI Research Engineer.*
